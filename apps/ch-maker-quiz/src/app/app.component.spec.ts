@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   it(`should have as title 'ch-maker-quiz'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ch-maker-quiz');
+    expect(app.title).toEqual('Das Schweizermacher Quiz');
   });
 
   it('should render title', () => {
@@ -25,7 +25,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to ch-maker-quiz!'
+      'Das Schweizermacher Quiz'
     );
   });
 });
