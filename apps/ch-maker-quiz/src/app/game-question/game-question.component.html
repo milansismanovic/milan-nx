@@ -1,0 +1,8 @@
+<h2>Frage</h2>
+<p>
+  {{question.question}} {{answers}}
+</p>
+<div *ngFor="let answer of question.answers">
+  <button class="answer" (click)="setAnswer()">{{answer}}</button>
+</div>
+
