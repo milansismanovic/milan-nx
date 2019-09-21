@@ -12,10 +12,13 @@ export class GameComponent implements OnInit {
     {
       question: "Die Regierungsform der Schweiz ist...",
       answers: [
-        "eine Demokratie",
-        "eine Diktatur",
-        "eine totalitäre Freiheitsregierungsform",
-        "eine koloniale Selbstverwaltungseidgenossenschaft der UNO"],
+        { id: 0, answerText: "eine Demokratie" },
+/*
+ { id: 1, answerText: "eine Diktatur" },
+        { id: 2, answerText: "eine totalitäre Freiheitsregierungsform" },
+        { id: 3, answerText: "eine koloniale Selbstverwaltungseidgenossenschaft der UNO" },
+        */
+        ]
       correctAnswer: 0
     }
   ];
