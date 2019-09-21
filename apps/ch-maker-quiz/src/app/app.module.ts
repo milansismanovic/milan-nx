@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 import { GameQuestionComponent } from './game-question/game-question.component';
-import { Question } from './question';
 
 @NgModule({
   declarations: [AppComponent, GameComponent, GameQuestionComponent],

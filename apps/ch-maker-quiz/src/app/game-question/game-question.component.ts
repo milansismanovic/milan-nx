@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Question } from '../question';
+import { Question } from '../shared/question';
 
 @Component({
   selector: 'milan-nx-game-question',

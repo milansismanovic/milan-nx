@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Question } from "../question";
+import { Question } from "../shared/question";
+import { MockQuestions } from "../shared/mock-questions";
 
 @Component({
   selector: 'milan-nx-game',
@@ -8,20 +9,7 @@ import { Question } from "../question";
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  questions: Question[] = [
-    {
-      question: "Die Regierungsform der Schweiz ist...",
-      answers: [
-        { id: 0, answerText: "eine Demokratie" },
-/*
- { id: 1, answerText: "eine Diktatur" },
-        { id: 2, answerText: "eine totalitäre Freiheitsregierungsform" },
-        { id: 3, answerText: "eine koloniale Selbstverwaltungseidgenossenschaft der UNO" },
-        */
-        ]
-      correctAnswer: 0
-    }
-  ];
+  questions: Question[] = MockQuestions;
 
   selectedQuestion: Question = this.questions[0];
 
