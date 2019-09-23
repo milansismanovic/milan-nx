@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameComponent } from './game.component';
+import { GameState } from '../shared/game-state';
 
 describe('GameComponent', () => {
   let component: GameComponent;

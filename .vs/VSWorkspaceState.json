@@ -3,15 +3,14 @@
     "",
     "\\apps",
     "\\apps\\ch-maker-quiz",
-    "\\apps\\ch-maker-quiz-e2e",
-    "\\apps\\ch-maker-quiz-e2e\\src",
-    "\\apps\\ch-maker-quiz-e2e\\src\\integration",
     "\\apps\\ch-maker-quiz\\src",
     "\\apps\\ch-maker-quiz\\src\\app",
     "\\apps\\ch-maker-quiz\\src\\app\\game",
-    "\\libs",
-    "\\libs\\ui"
+    "\\apps\\ch-maker-quiz\\src\\app\\game-question",
+    "\\apps\\ch-maker-quiz\\src\\app\\shared",
+    "\\apps\\ch-maker-quiz\\src\\assets",
+    "\\apps\\ch-maker-quiz\\src\\environments"
   ],
-  "SelectedNode": "\\apps\\ch-maker-quiz\\src\\app\\game\\game.component.ts",
+  "SelectedNode": "\\apps\\ch-maker-quiz\\src\\app\\shared\\game-state.ts",
   "PreviewInSolutionExplorer": false
 }
