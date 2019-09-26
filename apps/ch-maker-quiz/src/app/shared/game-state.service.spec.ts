@@ -75,7 +75,7 @@ describe('GameStateService', () => {
     else {
       // answer first two correct
       // assume correct answer is 0
-      service.setAnswer(0);  
+      service.setAnswer(0);
       service.nextQuestion();
       service.setAnswer(0);
       service.nextQuestion();
@@ -84,6 +84,23 @@ describe('GameStateService', () => {
       }
       expect(service.getCorrectAnswerCount()).toBe(2);
     }
+  });
+
+
+  it('randomizeQuestions() randomizes questions', () => {
+    const service: GameStateService = TestBed.get(GameStateService);
+    const firstQuestion = service.getQuestion(0);
+    const secondQuestion = service.getQuestion(1);
+    service.randomizeQuestions();
+    // check if at least one of the two questions are different
+    expect(firstQuestion === service.getQuestion(0) || secondQuestion === service.getQuestion(1)).toBeFalsy();
+
+    // check if the order of the questions has changed by checking if at least one answer is not 0 as this is how they are initialized
+    var notOnZeroPosition = false;
+    for (let i = 0; i < service.getQuestionCount(); i++) {
+      notOnZeroPosition = notOnZeroPosition || service.getQuestion(i).correctAnswer != 0;
+    }
+    expect(notOnZeroPosition).toBeTruthy();
   });
 
 });

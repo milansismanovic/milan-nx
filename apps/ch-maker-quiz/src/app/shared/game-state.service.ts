@@ -39,15 +39,15 @@ export class GameStateService {
       this.gameState.questions[j] = x;
     }
 
-    // randomize answers within questions
-    //for (let question in this.gameState.questions) {
-    //  console.log(question.toString());
-    //  let array: { id: Number; answerText: String; }[] = this.gameState.question.answers;
-    //  for (let i: number = array.length; i > 0; i--) {
-    //    let j: number = this.getRandomInt(0, i);
-    //    [array[i], array[j]] = [array[j], array[i]];
-    //  }
-    //}
+    // randomize answer order within questions
+    for (let k: number = this.getQuestionCount(); k > 0; k--) {
+      const a = this.gameState.questions[k].answers;
+      let array: { id: Number; answerText: String; }[] = this.gameState.questions[k].answers;
+      for (let i: number = array.length; i > 0; i--) {
+        let j: number = this.getRandomInt(0, i);
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
   }
 
   public getCurrentQuestion(): Question {
