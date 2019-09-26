@@ -86,4 +86,13 @@ describe('GameStateService', () => {
     }
   });
 
+
+  it('randomizeQuestions() randomizes questions', () => {
+    const service: GameStateService = TestBed.get(GameStateService);
+    const firstQuestion = service.getQuestion(0);
+    const secondQuestion = service.getQuestion(1);
+    service.randomizeQuestions();
+    expect(firstQuestion === service.getQuestion(0) || secondQuestion === service.getQuestion(1) ).toBeFalsy();
+  });
+
 });
