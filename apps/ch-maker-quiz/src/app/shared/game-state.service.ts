@@ -32,7 +32,7 @@ export class GameStateService {
   public randomizeQuestions() {
     // randomize question order using the 
     // swap questions positions 100 times
-    for (let i: number = this.getQuestionCount(); i > 0; i--) {
+    for (let i: number = this.getQuestionCount()-1; i > 0; i--) {
       let j: number = this.getRandomInt(0, i);
       let x: Question = this.gameState.questions[i];
       this.gameState.questions[i] = this.gameState.questions[j];
@@ -40,12 +40,18 @@ export class GameStateService {
     }
 
     // randomize answer order within questions
-    for (let k: number = this.getQuestionCount(); k > 0; k--) {
+    for (let k: number = this.getQuestionCount() - 1; k > 0; k--) {
+      //for (let a of this.gameState.questions[k].answers) {
+      //  for (let i: number = a.length; i > 0; i--) {
+      //    let j: number = this.getRandomInt(0, i);
+      //    [a[i], a[j]] = [a[j], a[i]];
+      //  }
+      //}
       const a = this.gameState.questions[k].answers;
-      let array: { id: Number; answerText: String; }[] = this.gameState.questions[k].answers;
-      for (let i: number = array.length; i > 0; i--) {
+      let answers: { id: Number; answerText: String; }[] = this.gameState.questions[k].answers;
+      for (let i: number = answers.length; i > 0; i--) {
         let j: number = this.getRandomInt(0, i);
-        [array[i], array[j]] = [array[j], array[i]];
+        [answers[i], answers[j]] = [answers[j], answers[i]];
       }
     }
   }
@@ -68,6 +74,9 @@ export class GameStateService {
   }
 
   public getQuestion(i: number): Question {
+    if (i < 0 || i >= this.getQuestionCount()) {
+      return null;
+    }
     return this.gameState.questions[i];
   }
 

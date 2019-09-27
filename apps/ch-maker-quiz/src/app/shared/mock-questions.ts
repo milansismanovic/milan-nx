@@ -2,6 +2,7 @@ import { Question } from './question'
 
 export const MockQuestions: Question[] = [
   {
+    id: 1,
     question: "Die Regierungsform der Schweiz ist...",
     answers: [
       { id: 0, answerText: "eine Demokratie" },
@@ -12,6 +13,7 @@ export const MockQuestions: Question[] = [
     correctAnswer: 0
   },
   {
+    id: 2,
     question: "Was ist der höchste Punkt der Schweiz?",
     answers: [
       { id: 0, answerText: "Dufourspitze" },
@@ -22,6 +24,7 @@ export const MockQuestions: Question[] = [
     correctAnswer: 0
   },
   {
+    id: 3,
     question: "Welche Kammer des Bundesparlaments ist nach der Bevölkerungsstärke der Kantone zusammengesetzt?",
     answers: [
       { id: 0, answerText: "Der Nationalrat" },
@@ -32,6 +35,7 @@ export const MockQuestions: Question[] = [
     correctAnswer: 0
   },
   {
+    id: 4,
     question: "Was ist der bevölkerungsreichste Kanton der Schweiz?",
     answers: [
       { id: 0, answerText: "Zürich" },

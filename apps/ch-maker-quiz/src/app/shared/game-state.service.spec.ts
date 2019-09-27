@@ -86,19 +86,30 @@ describe('GameStateService', () => {
     }
   });
 
-
   it('randomizeQuestions() randomizes questions', () => {
     const service: GameStateService = TestBed.get(GameStateService);
-    const firstQuestion = service.getQuestion(0);
-    const secondQuestion = service.getQuestion(1);
+    const firstQuestion: Question = service.getQuestion(0);
+    const secondQuestion: Question = service.getQuestion(1);
     service.randomizeQuestions();
+
     // check if at least one of the two questions are different
-    expect(firstQuestion === service.getQuestion(0) || secondQuestion === service.getQuestion(1)).toBeFalsy();
+    expect(firstQuestion === service.getQuestion(0) && secondQuestion === service.getQuestion(1)).toBeFalsy();
 
     // check if the order of the questions has changed by checking if at least one answer is not 0 as this is how they are initialized
     var notOnZeroPosition = false;
-    for (let i = 0; i < service.getQuestionCount(); i++) {
-      notOnZeroPosition = notOnZeroPosition || service.getQuestion(i).correctAnswer != 0;
+    const n = service.getQuestionCount();
+    for (let i = 0; i < n; i++) {
+      const q: Question = service.getQuestion(i);
+      // TODO check how q could be undefined
+      if (q === null || q === undefined)
+        continue;
+      console.log("1 i " + i + ", corect answer " + q.correctAnswer + " q: " + q + ", bool " + notOnZeroPosition + ", answers: " + q.answers);
+      const a: number = q.correctAnswer;
+      if (a != 0) {
+        notOnZeroPosition = true;
+        console.log("question is undefined");
+        break;
+      }
     }
     expect(notOnZeroPosition).toBeTruthy();
   });
