@@ -1,5 +1,6 @@
 import { Question } from './question'
 
+// convention for the unit tests: first question is always the correct one
 export const MockQuestions: Question[] = [
   {
     id: 1,

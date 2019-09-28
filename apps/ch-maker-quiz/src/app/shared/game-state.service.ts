@@ -14,7 +14,7 @@ export class GameStateService {
     answersGiven: [],
     currentQuestion: 0,
   };
-  
+
   constructor() {
     const n: number = this.gameState.questions.length;
     const noAnswerYet: AnswerGiven = { answerId: 0 };
@@ -23,17 +23,17 @@ export class GameStateService {
     }
   }
 
-  getRandomInt(min: number, max: number): number {
+  randomInt(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+  }
 
   public randomizeQuestions() {
     // randomize question order using the 
     // swap questions positions 100 times
-    for (let i: number = this.getQuestionCount()-1; i > 0; i--) {
-      let j: number = this.getRandomInt(0, i);
+    for (let i: number = this.getQuestionCount() - 1; i > 0; i--) {
+      let j: number = this.randomInt(0, i);
       let x: Question = this.gameState.questions[i];
       this.gameState.questions[i] = this.gameState.questions[j];
       this.gameState.questions[j] = x;
@@ -41,17 +41,17 @@ export class GameStateService {
 
     // randomize answer order within questions
     for (let k: number = this.getQuestionCount() - 1; k > 0; k--) {
-      //for (let a of this.gameState.questions[k].answers) {
-      //  for (let i: number = a.length; i > 0; i--) {
-      //    let j: number = this.getRandomInt(0, i);
-      //    [a[i], a[j]] = [a[j], a[i]];
-      //  }
-      //}
-      const a = this.gameState.questions[k].answers;
-      let answers: { id: Number; answerText: String; }[] = this.gameState.questions[k].answers;
-      for (let i: number = answers.length; i > 0; i--) {
-        let j: number = this.getRandomInt(0, i);
-        [answers[i], answers[j]] = [answers[j], answers[i]];
+      let q: Question = this.gameState.questions[k];
+      let answers: { id: Number; answerText: String; }[] = q.answers;
+      for (let i: number = answers.length - 1; i > 0; i--) {
+        let j: number = this.randomInt(0, i-1);
+        let x = answers[i];
+        answers[i] = answers[j];
+        answers[j] = x;
+        if (i === q.correctAnswer)
+          q.correctAnswer = j;
+        else if (j === q.correctAnswer)
+          q.correctAnswer = i;
       }
     }
   }

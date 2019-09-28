@@ -24,6 +24,10 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# IDE - VSCode
+.vs/*
+!.vs/milan-nx/applicationhost.config
+
 # misc
 /.sass-cache
 /connect.lock
@@ -37,4 +41,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-/.vs/milan-nx/v16/*.suo
