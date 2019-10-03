@@ -20,6 +20,8 @@ export class GameStateService {
     const n: number = this.gameState.questions.length;
     const noAnswerYet: AnswerGiven = { answerId: -1 };
     this.gameState.answersGiven = new Array(n).fill(noAnswerYet);
+    console.log("empty answers given:");
+    console.log(this.gameState.answersGiven);
   }
 
   randomInt(min: number, max: number): number {
@@ -29,22 +31,22 @@ export class GameStateService {
   }
 
   public randomizeQuestions() {
-    // randomize question order using the 
+    // randomize question order using the
     // swap questions positions 100 times
     for (let i: number = this.getQuestionCount() - 1; i > 0; i--) {
-      let j: number = this.randomInt(0, i);
-      let x: Question = this.gameState.questions[i];
+      const j: number = this.randomInt(0, i);
+      const x: Question = this.gameState.questions[i];
       this.gameState.questions[i] = this.gameState.questions[j];
       this.gameState.questions[j] = x;
     }
 
     // randomize answer order within questions
     for (let k: number = this.getQuestionCount() - 1; k > 0; k--) {
-      let q: Question = this.gameState.questions[k];
-      let answers: { id: Number; answerText: String; }[] = q.answers;
+      const q: Question = this.gameState.questions[k];
+      const answers: { id: Number; answerText: String; }[] = q.answers;
       for (let i: number = answers.length - 1; i > 0; i--) {
-        let j: number = this.randomInt(0, i-1);
-        let x = answers[i];
+        const j: number = this.randomInt(0, i-1);
+        const x = answers[i];
         answers[i] = answers[j];
         answers[j] = x;
         if (i === q.correctAnswer)
@@ -56,7 +58,7 @@ export class GameStateService {
   }
 
   public getCurrentQuestion(): Question {
-    let question: Question = this.gameState.questions[this.gameState.currentQuestion];
+    const question: Question = this.gameState.questions[this.gameState.currentQuestion];
     return question;
   }
 
@@ -68,7 +70,7 @@ export class GameStateService {
     if (this.hasNextQuestion()) {
       return this.gameState.questions[this.gameState.currentQuestion++];
     } else {
-      null;
+      return null;
     }
   }
 
@@ -88,10 +90,10 @@ export class GameStateService {
   }
 
   public getCorrectAnswerCount(): number {
-    let n: number = this.gameState.questions.length;
-    let correctAnswerCount: number = 0;
-    for (let i: number = 0; i < n; i++) {
-      if (this.gameState.answersGiven[i].answerId == this.gameState.questions[i].correctAnswer) {
+    const n: number = this.gameState.questions.length;
+    let correctAnswerCount = 0;
+    for (let i = 0; i < n; i++) {
+      if (this.gameState.answersGiven[i].answerId === this.gameState.questions[i].correctAnswer) {
         correctAnswerCount++;
       }
     }
@@ -99,8 +101,15 @@ export class GameStateService {
   }
 
   public setAnswer(questionId: number, answerIndex: Number) {
-    console.log(this.gameState.answersGiven);
-    this.gameState.answersGiven[questionId].answerId = answerIndex;
+    console.log("map: ");
+    console.log(this.gameState.answersGiven.map(a => a.answerId));
+    // Object.assign(K:a1,b1,c1, L:b2,d2) >> K: a1, b2, c1, d2 // EVIL
+    // Object.assign({}, K:a1,b1,c1, L:b2,d2) >> N: a1, b2, c1, d2 // GOOD but long
+    // {...K, ...L}
+
+    //const a: AnswerGiven = { answerId: answerIndex};
+    //this.gameState.answersGiven[questionId] = {...this.gameState.answersGiven[questionId], answerId: answerIndex};
+    this.gameState.answersGiven[questionId] = { answerId: answerIndex };
     console.log(this.gameState.answersGiven);
   }
 
