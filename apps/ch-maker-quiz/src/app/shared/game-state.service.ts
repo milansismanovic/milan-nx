@@ -16,11 +16,10 @@ export class GameStateService {
   };
 
   constructor() {
+    // initialize answersGiven with empty answers
     const n: number = this.gameState.questions.length;
-    const noAnswerYet: AnswerGiven = { answerId: 0 };
-    for (let i: number = 0; i < n; i++) {
-      this.gameState.answersGiven.push(noAnswerYet);
-    }
+    const noAnswerYet: AnswerGiven = { answerId: -1 };
+    this.gameState.answersGiven = new Array(n).fill(noAnswerYet);
   }
 
   randomInt(min: number, max: number): number {
@@ -99,8 +98,15 @@ export class GameStateService {
     return correctAnswerCount;
   }
 
-  public setAnswer(answerIndex: number) {
-    console.log(this.gameState.answersGiven[this.getCurrentQuestionIndex()]);
-    this.gameState.answersGiven[this.getCurrentQuestionIndex()].answerId = answerIndex;
+  public setAnswer(questionId: number, answerIndex: Number) {
+    console.log(this.gameState.answersGiven);
+    this.gameState.answersGiven[questionId].answerId = answerIndex;
+    console.log(this.gameState.answersGiven);
+  }
+
+  public getAnswer(answerIndex: number): AnswerGiven{
+    const answer: AnswerGiven = this.gameState.answersGiven[answerIndex];
+    console.log(answer);
+    return answer;
   }
 }

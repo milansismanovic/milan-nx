@@ -2,6 +2,7 @@ import { TestBed, fakeAsync } from '@angular/core/testing';
 
 import { GameStateService } from './game-state.service';
 import { Question } from './question';
+import { AnswerGiven } from './answer-given';
 
 describe('GameStateService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
@@ -84,9 +85,9 @@ describe('GameStateService', () => {
     else {
       // answer first two correct
       // assume correct answer is 0
-      service.setAnswer(0);
+      service.setAnswer(0, 0);
       service.nextQuestion();
-      service.setAnswer(0);
+      service.setAnswer(1, 0);
       service.nextQuestion();
       while (service.hasNextQuestion()) {
         service.nextQuestion();
@@ -128,6 +129,17 @@ describe('GameStateService', () => {
       }
     }
     expect(notOnZeroPosition).toBeTruthy();
+  });
+
+  it('getAnswer(i) must return same value x that was set with setAnswer(i,x)', () => {
+    const service: GameStateService = TestBed.get(GameStateService);
+    const answerIndex = 1;
+
+    service.gameState.answersGiven[answerIndex] = { answerId: 3 };
+
+    service.setAnswer(answerIndex, 2);
+    let answer: AnswerGiven = service.getAnswer(answerIndex);
+    expect(answer.answerId).toBe(2);
   });
 
 

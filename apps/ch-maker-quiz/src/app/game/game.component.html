@@ -1,2 +1,2 @@
 
-<milan-nx-game-question [question]="selectedQuestion"></milan-nx-game-question>
+<milan-nx-game-question [question]="gameStateService.getCurrentQuestion()" (answered)="onAnswered($event)"></milan-nx-game-question>

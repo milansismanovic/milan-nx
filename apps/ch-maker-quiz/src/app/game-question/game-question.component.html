@@ -3,6 +3,6 @@
   {{question.question}}
 </p>
 <div *ngFor="let answer of question.answers">
-  <button class="answer" (click)="setAnswer(answer)">{{answer.answerText}}</button>
+  <button class="answer" (click)="setAnswer(answer.id)">{{answer.id}} {{answer.answerText}}</button>
 </div>
 

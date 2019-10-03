@@ -1,3 +1,3 @@
-﻿export class AnswerGiven {
-    answerId: number;
+export class AnswerGiven {
+    answerId: Number;
 }

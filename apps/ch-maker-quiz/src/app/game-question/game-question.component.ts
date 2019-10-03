@@ -1,22 +1,24 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Question } from '../shared/question';
+import { AnswerGiven } from '../shared/answer-given';
 
 @Component({
   selector: 'milan-nx-game-question',
   templateUrl: './game-question.component.html',
   styleUrls: ['./game-question.component.scss']
 })
-export class GameQuestionComponent implements OnInit {
+export class GameQuestionComponent {
   @Input() question: Question;
+  @Output() answered = new EventEmitter<AnswerGiven>();
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  setAnswer() {
-    window.alert('Eine Antwort wurde gegeben.');
-      console.log(this.question);
+  setAnswer(answerId: Number) {
+    let answer: AnswerGiven = new AnswerGiven();
+    console.log("setAnswer called");
+    console.log(answerId);
+    console.log(answer);
+    answer.answerId = answerId;
+    this.answered.emit(answer);
+    console.log(answer);
   }
 }
