@@ -24,6 +24,8 @@ export class GameComponent implements OnInit {
     console.log(this.gameStateService.getAnswer(this.gameStateService.getCurrentQuestionIndex()));
     this.gameStateService.setAnswer(this.gameStateService.getCurrentQuestionIndex(), answer.answerId);
     console.log(this.gameStateService.getAnswer(this.gameStateService.getCurrentQuestionIndex()));
+
+    this.gameStateService.nextQuestion();
   }
 
 }

@@ -20,8 +20,6 @@ export class GameStateService {
     const n: number = this.gameState.questions.length;
     const noAnswerYet: AnswerGiven = { answerId: -1 };
     this.gameState.answersGiven = new Array(n).fill(noAnswerYet);
-    console.log("empty answers given:");
-    console.log(this.gameState.answersGiven);
   }
 
   randomInt(min: number, max: number): number {
@@ -101,8 +99,6 @@ export class GameStateService {
   }
 
   public setAnswer(questionId: number, answerIndex: Number) {
-    console.log("map: ");
-    console.log(this.gameState.answersGiven.map(a => a.answerId));
     // Object.assign(K:a1,b1,c1, L:b2,d2) >> K: a1, b2, c1, d2 // EVIL
     // Object.assign({}, K:a1,b1,c1, L:b2,d2) >> N: a1, b2, c1, d2 // GOOD but long
     // {...K, ...L}
