@@ -13,12 +13,7 @@ export class GameQuestionComponent {
   @Output() answered = new EventEmitter<AnswerGiven>();
 
   setAnswer(answerId: Number) {
-    let answer: AnswerGiven = new AnswerGiven();
-    console.log("setAnswer called");
-    console.log(answerId);
-    console.log(answer);
-    answer.answerId = answerId;
+    let answer: AnswerGiven = { answerId: answerId };
     this.answered.emit(answer);
-    console.log(answer);
   }
 }

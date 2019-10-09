@@ -16,6 +16,10 @@ export class GameStateService {
   };
 
   constructor() {
+    this.resetAnswers();
+  }
+
+  resetAnswers() {
     // initialize answersGiven with empty answers
     const n: number = this.gameState.questions.length;
     const noAnswerYet: AnswerGiven = { answerId: -1 };
@@ -30,7 +34,7 @@ export class GameStateService {
 
   public randomizeQuestions() {
     // randomize question order using the
-    // swap questions positions 100 times
+    // swap questions positions using the 'Fisher-Yates shuffle'
     for (let i: number = this.getQuestionCount() - 1; i > 0; i--) {
       const j: number = this.randomInt(0, i);
       const x: Question = this.gameState.questions[i];
@@ -47,10 +51,12 @@ export class GameStateService {
         const x = answers[i];
         answers[i] = answers[j];
         answers[j] = x;
+        /*
         if (i === q.correctAnswer)
           q.correctAnswer = j;
         else if (j === q.correctAnswer)
           q.correctAnswer = i;
+        */
       }
     }
   }
@@ -106,12 +112,16 @@ export class GameStateService {
     //const a: AnswerGiven = { answerId: answerIndex};
     //this.gameState.answersGiven[questionId] = {...this.gameState.answersGiven[questionId], answerId: answerIndex};
     this.gameState.answersGiven[questionId] = { answerId: answerIndex };
-    console.log(this.gameState.answersGiven);
   }
 
   public getAnswer(answerIndex: number): AnswerGiven{
     const answer: AnswerGiven = this.gameState.answersGiven[answerIndex];
-    console.log(answer);
     return answer;
+  }
+
+  public newGame() {
+    this.resetAnswers();
+    this.gameState.currentQuestion = 0;
+    this.randomizeQuestions();
   }
 }

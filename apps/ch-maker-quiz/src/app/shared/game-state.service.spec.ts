@@ -123,7 +123,7 @@ describe('GameStateService', () => {
     const n = service.getQuestionCount();
     for (let i = 0; i < n; i++) {
       const q: Question = service.getQuestion(i);
-      if (q.correctAnswer != 0) {
+      if (q.answers[0].id != 0) {
         notOnZeroPosition = true;
         break;
       }

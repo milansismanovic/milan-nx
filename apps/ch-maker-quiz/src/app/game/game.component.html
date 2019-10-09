@@ -1,2 +1,5 @@
 
 <milan-nx-game-question [question]="gameStateService.getCurrentQuestion()" (answered)="onAnswered($event)"></milan-nx-game-question>
+<milan-nx-game-result [correctAnswerCount]="gameStateService.getCorrectAnswerCount()" [totalAnswerCount]="gameStateService.getQuestionCount()"></milan-nx-game-result>
+
+<div *ngIf="!gameStateService.getCurrentQuestion()"><button (click)="gameStateService.newGame()">Neues Spiel</button></div>

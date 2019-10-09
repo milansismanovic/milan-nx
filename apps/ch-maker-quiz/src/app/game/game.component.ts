@@ -15,16 +15,11 @@ export class GameComponent implements OnInit {
   constructor(private gameStateService: GameStateService) { }
 
   ngOnInit() {
-    let q: Question = this.gameStateService.getCurrentQuestion();
-    console.log(q);
   }
 
   onAnswered(answer: AnswerGiven) {
-    console.log(answer);
-    console.log(this.gameStateService.getAnswer(this.gameStateService.getCurrentQuestionIndex()));
+    console.log(answer.answerId);
     this.gameStateService.setAnswer(this.gameStateService.getCurrentQuestionIndex(), answer.answerId);
-    console.log(this.gameStateService.getAnswer(this.gameStateService.getCurrentQuestionIndex()));
-
     this.gameStateService.nextQuestion();
   }
 
