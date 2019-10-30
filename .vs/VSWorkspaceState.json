@@ -11,6 +11,6 @@
     "\\apps\\ch-maker-quiz\\src\\assets",
     "\\apps\\ch-maker-quiz\\src\\environments"
   ],
-  "SelectedNode": "\\apps\\ch-maker-quiz\\src\\app\\shared\\game-state.service.spec.ts",
+  "SelectedNode": "\\apps\\ch-maker-quiz\\src\\app\\game-question\\game-question.component.scss",
   "PreviewInSolutionExplorer": false
 }

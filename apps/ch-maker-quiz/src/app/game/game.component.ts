@@ -15,12 +15,15 @@ export class GameComponent implements OnInit {
   constructor(private gameStateService: GameStateService) { }
 
   ngOnInit() {
+    this.gameStateService.newGame();
   }
 
   onAnswered(answer: AnswerGiven) {
-    console.log(answer.answerId);
     this.gameStateService.setAnswer(this.gameStateService.getCurrentQuestionIndex(), answer.answerId);
     this.gameStateService.nextQuestion();
   }
 
+  service(): GameStateService {
+    return this.gameStateService;
+  }
 }

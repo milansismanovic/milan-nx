@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class GameResultComponent implements OnInit {
   @Input() correctAnswerCount: number;
+  @Input() answeredCount: number;
   @Input() totalAnswerCount: number;
 
   constructor() { }

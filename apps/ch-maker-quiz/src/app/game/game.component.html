@@ -1,5 +1,5 @@
 
-<milan-nx-game-question [question]="gameStateService.getCurrentQuestion()" (answered)="onAnswered($event)"></milan-nx-game-question>
-<milan-nx-game-result [correctAnswerCount]="gameStateService.getCorrectAnswerCount()" [totalAnswerCount]="gameStateService.getQuestionCount()"></milan-nx-game-result>
+<milan-nx-game-question [question]="service().getCurrentQuestion()" (answered)="onAnswered($event)"></milan-nx-game-question>
+<milan-nx-game-result [correctAnswerCount]="service().getCorrectAnswerCount()" [answeredCount]="service().answeredCount()" [totalAnswerCount]="service().getQuestionCount()"></milan-nx-game-result>
 
-<div *ngIf="!gameStateService.getCurrentQuestion()"><button (click)="gameStateService.newGame()">Neues Spiel</button></div>
+<div *ngIf="!service().getCurrentQuestion()"><button (click)="service().newGame()">Neues Spiel</button></div>

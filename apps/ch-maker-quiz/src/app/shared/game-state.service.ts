@@ -32,7 +32,7 @@ export class GameStateService {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  public randomizeQuestions() {
+  randomizeQuestions() {
     // randomize question order using the
     // swap questions positions using the 'Fisher-Yates shuffle'
     for (let i: number = this.getQuestionCount() - 1; i > 0; i--) {
@@ -91,6 +91,10 @@ export class GameStateService {
 
   public getQuestionCount(): number {
     return this.gameState.questions.length;
+  }
+
+  public answeredCount(): number {
+    return this.gameState.answersGiven.filter(answer => answer.answerId > -1).reduce((sum, answer) => sum + 1, 0);
   }
 
   public getCorrectAnswerCount(): number {
